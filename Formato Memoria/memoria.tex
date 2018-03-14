@@ -1,0 +1,270 @@
+%% inicio, la clase del documento es iccmemoria.cls
+\documentclass{iccmemoria}
+
+%% datos generales y para la tapa
+\titulo{SISTEMA WEB PARA LA VISUALIZACIÓN DE CALIDAD DEL AIRE}
+\author{Fernando René Gómez Sepúlveda}
+\supervisor{BENJAMÍN INGRAM}
+\informantes
+	{Profesor Informante 1}
+	{Profesor Informante 2}
+\adicional{(sólo por si se necesita agregar algún otro profesor)}
+\director{Profesor del ramo Memoria de Título}
+\date{Julio, 2017}
+
+%% inicio de documento
+\begin{document}
+
+%% crea la tapa
+\maketitle
+
+%% dedicatoria
+\begin{dedicatory}
+Dedicado a ...
+\end{dedicatory}
+
+%% agradecimientos
+\begin{acknowledgment}
+Agradecimientos a ...
+\end{acknowledgment}
+
+%% indices
+\tableofcontents
+\listoffigures
+\listoftables
+
+%% resumen
+\begin{resumen}
+Aquí va el resumen (en Castellano)... 
+\end{resumen}
+
+%% abstract
+
+%% contenido del primer capítulo
+\chapter{Primer Capítulo}
+Aquí va el texto del capítulo 1...
+
+\section{La primera sección del capítulo 1}
+Aquí va el texto de la primera sección del capítulo 1... 
+
+\subsection{La primera subsección de la primera sección del capítulo 1}
+Aquí va el texto de la primera subsección de la primera sección del capítulo 1... 
+
+\subsection{La segunda subsección de la primera sección del capítulo 1}
+Aquí va el texto de la segunda subsección de la primera sección del capítulo 1...
+
+\section{La segunda sección del capítulo 1}
+Aquí va el texto de la segunda sección del capítulo 1...
+
+
+%% contenido del segundo capítulo
+\chapter{Marco teórico}
+En este capítulo se hablara del marco teórico para el entendimiento necesario de todo el desarrollo del proyecto, también ayudara para interpretación de resultados y la formulación de  conclusiones.
+
+\section{Contaminación Atmosférica}
+ Los efectos en la salud provocados por la contaminación atmosférica cuentan con evidencia científica cada vez más incontrastable, que proviene de una variedad de estudios epidemiológicos realizados tanto en el contexto poblacional como ocupacional, además de estudios toxicológicos y de exposición controlada en seres humanos. En especial para el material particulado se ha acumulado evidencia que apoya su relación causal con mortalidad prematura de causa cardiovascular, respiratoria y cáncer pulmonar, así como un sin número de efectos en la morbilidad: aumento de las hospitalizaciones por cardiopatía coronaria, insuficiencia cardíaca, asma bronquial, EPOC \cite{}.
+
+La contaminación  del aire puede ser por varios tipos de contaminantes, para este proyecto el material particulado (PM) es el principal, este afecta de mayor manera  al nuestro cuerpo, además de ser los contaminantes más relevantes en nuestra región y país, este puede ser de diferentes tamaños, para este proyecto se utiliza el MP10 y el MP2.5.
+
+
+\subsection{Material Particulado (PM)}
+Es una mezcla de partículas líquidas, sólidas o líquidas y sólidas suspendidas en el aire que difieren en tamaño, composición y origen. El tamaño de las partículas suspendidas en la atmósfera varía en más de cuatro órdenes de magnitud, desde unos pocos nanómetros a decenas de micrómetros. El Material Particulado conviene clasificarlo por sus propiedades aerodinámicas (Diámetro Aerodinámico), dado que estas son un factor decisivo para el transporte y la remoción de las partículas desde el aire. También, son determinantes para el sistema respiratorio y están asociadas con la composición química y las fuentes de esas partículas, cuando se habla del tamaño de una partícula, se está hablando de su diámetro aerodinámico.
+
+
+
+\subsection{PM 2.5}
+Corresponde a las partículas de diámetro menor a 2.5 mm. Representa una mezcla compleja de substancias orgánicas e inorgánicas. Estas partículas pueden ser generadas de forma natural o por la acción del hombre, estas es más perjudicial que las MP10, ya que su tamaño es menor por lo tanto estos penetran de mayor manera en el sistema respiratorio, provocando un mayor daño.
+
+\subsection{PM 10}
+Corresponde a las partículas de diámetro menor a 10 mm. Representa una mezcla compleja de substancias orgánicas e inorgánicas. Estas partículas pueden ser generadas de forma natural o por la acción del hombre.
+
+\begin{figure}[H]
+  \vspace*{1cm}
+ \includegraphics[scale=0.7]{PM10cabellohumano.png}
+\centering
+  \vspace*{1cm}
+  \caption{Comparación entre MP 2.5 y 10. Fuente: https://es.wikipedia.org/wiki/PM10}
+\end{figure}
+
+\section{Sistema de Información Geográfica}
+La mayor parte de la de la información que manejamos en cualquier tipo de disciplina está geo referenciada. Es decir, que se trata de información a la cual puede asignarse una posición geográfica, y es por tanto información que viene acompañada de otra información adicional relativa a su localización. Un sistema de información geográfica (SIG) es fundamentalmente una herramienta para trabajar con información geo referenciada, una definición en la que pueden entrar un gran número de tecnologías y de otros elementos no tecnológicos.\cite{}
+
+
+Un SIG es un sistema complejo que está compuesto de cinco elementos esenciales, los cuales están fuertemente relaciones unos de otros,  se puede apreciar en la figura 2.2 estos componentes.
+
+\begin{figure}[H]
+  \vspace*{1cm}
+ \includegraphics[scale=0.13]{ElementosSIG.png}
+\centering
+  \vspace*{1cm}
+  \caption{Elementos que forman el sistema SIG. Fuente: http://volaya.github.io/libro-sig/chapters/Introduccion\_fundamentos.html}
+\end{figure}
+
+\begin{itemize}
+  \item {\textbf{Datos}: Los datos son la materia prima necesaria para el trabajo en un SIG, y los que contienen la información geográfica vital para la propia existencia de los SIG.} 
+  \item {\textbf{Métodos}:Un conjunto de formulaciones y metodologías a aplicar sobre los datos.} 
+  \item {\textbf{Software}:Es necesaria una aplicación informática que pueda trabajar con los datos e implemente los métodos anteriores.} 
+  \item {\textbf{Hardware}: El equipo necesario para ejecutar el software.} 
+  \item {\textbf{Personas}: Las personas son las encargadas de diseñar y utilizar el software, siendo el motor del sistema SIG.} 
+\end{itemize}
+\subsection{Modelos de datos espaciales}
+Los modelos geográficos nos ofrecen una concepción particular del espacio geográfico y sus atributos. En base a ellos, el siguiente paso es reducir las propiedades de dichos modelos a un conjunto finito de elementos, de tal modo que el registro de dichos elementos sirva para almacenar la realidad que los modelos geográficos describen. Para ello, empleamos los modelos de representación, también denominados modelos de datos.
+Para un mismo tipo de información existen diversas alternativas en cuanto a la forma de materializar la realidad y plasmar el modelo geográfico concreto. Estas formas las podemos clasificar en dos grupos principales: modelo de representación raster y modelo de representación vectorial.\cite{}
+
+\begin{figure}[H]
+  \vspace*{1cm}
+ \includegraphics[scale=0.7]{capasRasterVectorial.jpg}
+\centering
+  \vspace*{1cm}
+  \caption{Modelos raster y vectorial. Fuente: http://geoservice.igac.gov.co/ contenidos\_telecentro/fundamentos\_sig/cursos/sem\_2/uni2/index.php?id=2}
+\end{figure}
+
+\subsubsection{Modelo vectorial}
+
+Son aquellos sistemas de información geográfica que utilizan vectores definidos por pares de coordenadas relativas a algún sistema cartográfico para la descripción de los objetos geográficos.
+Es importante aclarar qué modelo de datos hace referencia a la conceptualización del espacio y estructura de datos  se refiere a la implementación de esa conceptualización.
+El modelo de datos vector usa el sistema de coordenadas X, Y además emplea representaciones geométricas de punto, línea y polígono de acuerdo con el número de dimensiones y sus propiedades.\cite{}
+
+
+\begin{figure}[H]
+  \vspace*{1cm}
+ \includegraphics[scale=0.43]{PrimitivasVectoriales.png}
+\centering
+  \vspace*{1cm}
+  \caption{ Representación vectorial y ejemplos particulares de cada una de ellas con atributos asociados. Fuente: http://volaya.github.io/libro-sig/chapters/Tipos\_datos.html}
+\end{figure}
+
+\subsubsection{Modelo Raster}
+
+En el modelo raster, la zona de estudio se divide de forma sistemática en una serie de unidades mínimas (denominadas habitualmente celdas), y para cada una de estas se recoge la información pertinente que la describe. La característica principal del modelo raster, y que le confiere gran parte de sus propiedades más interesantes, especialmente de cara al análisis, es su sistematicidad. La división del espacio en unidades mínimas se lleva a cabo de forma sistemática de acuerdo con algún patrón, de tal modo que existe una relación implícita entre las celdas, ya que estas son contiguas entre sí, cubren todo el espacio, y no se solapan. Por tanto, la posición de una celda depende de la de las restantes, para así conformar en conjunto toda la malla regular que cumple las anteriores características. Dicho de otro modo, el orden propio de las celdas, presente gracias a la división sistemática realizada, aporta un elemento adicional que las relaciona entre sí.\cite{}
+
+\begin{figure}[H]
+  \vspace*{1cm}
+ \includegraphics[scale=0.6]{ejemploRaster.jpg}
+\centering
+  \vspace*{1cm}
+  \caption{ Representación raster. Fuente:http://geoservice.igac.gov.co/ contenidos\_telecentro/fundamentos\_sig/cursos/sem\_2/uni2/index.php?id=24}
+\end{figure}
+
+\section{Interpolación espacial}
+Interpolación espacial es el proceso de manipular información espacial para extraer información nueva y significativa a partir de los datos originales. Usualmente el análisis espacial se realiza con un Sistema de Información geográfica (SIG). Un SIG normalmente proporciona herramientas de análisis espacial para calcular estadísticas de las entidades y realizar actividades de geo procesamiento como la interpolación de datos. En hidrología es posible que los usuarios enfaticen la importancia del análisis del terreno y del modelado hidrológico (modelar el movimiento del agua por sobre y dentro de la tierra). En la gestión de la vida salvaje, los usuarios están interesados en funciones analíticas que tratan con las ubicaciones de puntos de la vida salvaje y sus relaciones con el medio ambiente. Cada usuario tendrá diferentes cosas en las que está interesado dependiendo de la clase de trabajo que realicen \cite{1}.
+
+\subsection{Métodos de interpolación} 
+La interpolación espacial nos sirve para utilizar puntos con valores conocidos para luego  estimar valores desconocidos en otros puntos que no tengamos información.  En nuestro caso las mediciones de contaminación se hacen en varias estaciones de medición en la ciudad de Curicó, pero no se puede tener en cada lugar una estación, es por esto que se tiene que interpolar los datos generados y así  lograr estimar esos datos faltantes.  Por este motivo existen diferentes tipos de interpolación que nos ayudan a estimar y generar superficies estadísticas.
+
+\subsubsection{Inverso a la Distancia (IDW)} 
+En el método de interpolación IDW, los puntos de muestreo se ponderan durante la interpolación de tal manera que la influencia de un punto en relación con otros disminuye con la distancia desde el punto desconocido que se desea crear.
+La ponderación es asignada a los puntos de muestreo mediante la utilización de un coeficiente de ponderación que controla cómo la influencia de la ponderación decae mientras la distancia hacia el punto nuevo se incrementa. Mientras más grande sea el coeficiente de ponderación menor será el efecto que los puntos tendrán si están lejos del punto desconocido durante el proceso de interpolación. Conforme el coeficiente se incrementa, el valor de los puntos desconocidos se aproxima al valor del punto de observación más cercano.\cite{1}
+
+\subsubsection{Kriging (ordinario)}
+Kriging es un procedimiento geo estadístico avanzado que genera una superficie estimada a partir de un conjunto de puntos dispersados con valores z. Más aún que con otros métodos de interpolación, se debe realizar una investigación profunda del comportamiento espacial del fenómeno representado por los valores z antes de seleccionar el mejor método de estimación para generar la superficie de salida.\cite{3}
+
+\section{Arquitectura Cliente-Servidor}
+La arquitectura cliente-servidor se caracteriza por dividir los sistemas en dos partes. Por un lado tenemos el cliente que se ejecuta en los terminales de los usuarios. Los servidores son los encargados de proveer los servicios necesarios para que los clientes trabajen y entreguen la información requerida por estos. Estas entidades se encuentran separados de forma lógica y se comunican a través de una red de comunicaciones, para trabajar de forma conjunta. El esquema básico es que un cliente realiza una petición de un servicio, el servidor Recibe y procesa dicha petición y retorna la respuesta solicitada.
+
+\subsection{Base de datos geográfica}
+Una Base de Datos geográfica (BDG) es un conjunto de datos geográficos organizados de tal manera que permiten la realización de análisis y la gestión del territorio dentro de aplicaciones de Sistemas de información geográfica (SIG). Además, una BDG se utiliza de soporte para la implantación de servicios geográficos relacionados con las Infraestructuras de Datos Espaciales (IDE), y su contenido es la base fundamental en los procesos de producción cartográficos.
+
+La espina dorsal de una BDG es el modelo de datos, que consiste en la formalización conceptual (descripción) de las entidades geográficas del mundo real con el objeto de realizar una abstracción que permita satisfacer unas necesidades de información. La implementación del modelo debe de facilitar la explotación y optimizar el almacenamiento para conseguir el mejor rendimiento en las consultas.\cite{}
+\subsection{PostgreSQL PostGIS}
+
+PostgreSQL es un sistema de gestión de bases de datos objeto-relacional, distribuido bajo licencia BSD y con su código fuente disponible libremente. Es el sistema de gestión de bases de datos de código abierto más potente del mercado y en sus últimas versiones no tiene nada que envidiarle a otras bases de datos comerciales.
+PostgreSQL utiliza un modelo cliente/servidor y usa multiprocesos en vez de multi hilos para garantizar la estabilidad del sistema. Un fallo en uno de los procesos no afecta al resto y el sistema puede continuar funcionando.\cite{}
+
+PostGIS es una extensión que convierte el sistema de base de datos PostgreSQL en una base de datos espacial. La combinación de ambos es una solución perfecta para el almacenamiento, gestión y mantenimiento de datos espaciales. Debido a que está construido sobre PostgreSQL, PostGIS hereda automáticamente sus características, así como los estándares abiertos. \cite{}
+
+
+\subsection{Mapserver}
+MapServer es un motor de renderizado de datos geográficos de código abierto escrito en C. Más allá de exploración de datos SIG, MapServer permite crear mapa de imágenes geográficos, es decir, los mapas que pueden dirigir contenido al usuario. \cite{}
+
+Algunas de sus mayores características incluye:
+\begin{itemize}
+  \item {Soporte para la visualización y consulta de cientos de formatos raster, vector y base de datos.} 
+  \item {Capacidad de ejecutarse en varios sistemas operativos (Windows, Linux, Mac OS X, etc.).} 
+  \item {Soporte de los populares lenguajes de scripts y ambientes de desarrollo (PHP, Python, Perl, Ruby, Java, .NET).} 
+  \item {Representación de alta calidad} 
+  \item {Salida de aplicaciones totalmente personalizables.} 
+\end{itemize}
+
+\subsection{R}
+R es una implementación de software libre del lenguaje S pero con soporte de alcance estético. Se trata de uno de los lenguajes más utilizados en investigación por la comunidad estadística, siendo además muy popular en el campo de la minera de datos, la investigación biomédica, la bioinformática y las matemáticas financieras. A esto contribuye la posibilidad de cargar diferentes bibliotecas o paquetes con funcionalidades de cálculo o para  graficar. Además, R puede integrarse con distintas bases de datos y existen bibliotecas que facilitan su utilización desde lenguajes de programación interpretados como Perl y Python.\cite{}
+
+\subsection{Openlayers}
+
+Openlayers es una librería javascript que se ha posicionado como la mejor alternativa a google maps a la hora de incluir un componente de tipo mapa en cualquier página web, con georreferencias. Lo más interesante es que incluso si disponemos de la cartógrafa de Google, Microsoft (MSN Virtual Earth) o Yahoo, también puedes usar OpenLayers como visor porque es totalmente compatible con tecnologías propietarias, además de cumplir con los estándares WMS y WFS.
+Al ser una librería del lado del cliente, es un visor de mapas en javascript, la descarga de estos se realiza directamente desde el navegador a través de Ajax , no genera tráfico en el servidor, los mapas se descargan directamente del servidor de mapas que suele ser una pieza diferenciada a nivel de sistemas.
+OpenLayers permite sobreponer distintas capas sobre una básica, añadir indicadores o puntos en el mapa con leyendas, así como polígonos y proporciona su propio api para dibujarlos de una manera sencilla.
+
+\begin{figure}[H]
+  \vspace*{1cm}
+ \includegraphics[scale=0.5]{openlayers.png}
+\centering
+  \vspace*{1cm}
+  \caption{ Openlayers 3.}
+\end{figure}
+
+\section{Sistemas Existentes}
+\subsection{Sistema de información Nacional de Calidad del Aire (SINCA)}
+El Sistema de información Nacional de Calidad del Aire (SINCA) del Ministerio de Medio Ambiente pone a su disposición información de calidad de aire de todo el país, buscando mejorar gradualmente el conocimiento, la vigilancia y la gestión de la calidad del aire que respiramos.\cite{}
+
+Este es un sitio web el cual contiene la información de la calidad del aire en las distintas regiones y ciudades del país, Como se puede ver en la figura 2.7 su visualización es simple. Además este sistema tiene una sección de estadísticas, la cual entrega información más detallada de los distintos tipos de contaminantes como también la posibilidad de graficar estos datos.
+\begin{figure}[H]
+  \vspace*{1cm}
+ \includegraphics[scale=0.5]{sinca.png}
+\centering
+  \vspace*{1cm}
+  \caption{ SINCA. Fuente: http://sinca.mma.gob.cl/index.php/}
+\end{figure}
+
+
+%% contenido del tercer capítulo
+\chapter{Tercer Capítulo}
+Sólo para incluir figuras y tablas.
+
+\begin{table}[h]
+  \vspace*{1cm}
+  (aquí debiera ir la tabla)
+  \vspace*{1cm}
+  \caption{La primera tabla de la memoria}
+\end{table}
+
+
+%% ambiente glosario
+\begin{glosario}
+  \item[El primer término:] Este es el significado del primer término, realmente no se bien lo que significa pero podría haberlo averiguado si hubiese tenido un poco mas de tiempo.
+  \item[El segundo término:] Este si se lo que significa pero me da lata escribirlo...
+\end{glosario}
+
+
+%% genera las referencias
+\bibliography{refs}
+
+
+%% comienzo de la parte de anexos
+\appendixpart
+
+%% contenido del primer anexo
+\appendix{El Primer Anexo}
+Aquí va el texto del primer anexo...
+
+\section{La primera sección del primer anexo}
+Aquí va el texto de la primera sección del primer anexo...
+
+\section{La segunda sección del primer anexo}
+Aquí va el texto de la segunda sección del primer anexo...
+
+\subsection{La primera subsección de la segunda sección del primer anexo}
+
+
+%% contenido del segundo anexo
+\appendix{El segundo Anexo}
+Aquí va el texto del segundo anexo...
+
+\section{La primera sección del segundo anexo}
+Aquí va el texto de la primera sección del segundo anexo...
+
+%% fin
+\end{document}
+
+   
+

@@ -1,0 +1,372 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo.png" />
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Monitoreo de Contaminación </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href="assets/css/material-dashboard.css" rel="stylesheet" />
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+   
+    <link rel="stylesheet" href="assets/css/rangeSlider.css">
+    <style>
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }      
+
+        output {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px 0;
+            width: 100%;
+        }
+    </style>
+
+
+</head>
+
+<body onload="init()">
+<div class="wrapper">
+        <div class="sidebar" data-active-color="blue" data-background-color="black">       
+            <div class="logo">
+                <a href="index.html" class="simple-text"><img src="assets/img/logo.png" width="53" height="45">
+                    Calidad del aire                 
+                </a>
+            </div>
+            <div class="logo logo-mini">
+                <a href="index.html" class="simple-text">
+                    <img src="assets/img/logo.png" width="25" height="25">
+                </a>
+            </div>
+            <div class="sidebar-wrapper">                
+                <ul class="nav">
+                    <li class="active" >
+                        <a href="index.html">
+                            <i class="material-icons">home</i>
+                            <p>Inicio</p>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="estaciones.html">
+                            <i class="material-icons">place</i>
+                            <p>Estaciones</p>
+                        </a>
+                    </li>  
+                    <li >
+                        <a href="resumenDia.html">
+                            <i class="material-icons">today</i>
+                            <p>Resumen del día</p>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="historial.html">
+                            <i class="material-icons">assessment</i>
+                            <p>Historial de datos</p>
+                        </a>
+                    </li>               
+                    <li>
+                        <a href="acercaDe.html">
+                            <i class="material-icons">work</i>
+                            <p>Acerca de</p>
+                        </a>
+                    </li>                                                     
+                </ul>  
+            </div>
+        </div>
+        <div class="main-panel">
+            <nav class="navbar navbar-transparent navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-minimize">
+                        <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">
+                            <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+                            <i class="material-icons visible-on-sidebar-mini">view_list</i>
+                        </button>
+                    </div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html#"> Inicio </a>
+                    </div>               
+                </div>
+            </nav>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="green">
+                                    <i class="material-icons">language</i>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Mapa</h4>
+                                    <div>
+                                        <div id="controls">
+                                        </div>
+                                        <div id="map" style="width: 100%; height: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container-fluid">                   
+                    <p class="copyright pull-right">   
+                        Fernando Gómez , Curicó &copy; <script>
+                            document.write(new Date().getFullYear())
+                        </script>
+                    </p>
+                </div>
+            </footer>           
+    </div>
+    <div class="fixed-plugin">
+        <div class="dropdown show-dropdown">
+            <a href="#" data-toggle="dropdown">
+                <i class="fa fa-cog fa-2x"> </i>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="header-title"> Configuración</li>
+                
+                <li class="header-title">Sidebar Background</li>
+                
+                <li class="adjustments-line">
+                    <a href="javascript:void(0)" class="switch-trigger">
+                        <p>Sidebar Mini</p>
+                        <div class="togglebutton switch-sidebar-mini">
+                            <label>
+                                <input type="checkbox" unchecked="">
+                            </label>
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                </li>
+                <li class="adjustments-line">
+                    <a href="javascript:void(0)" class="switch-trigger">
+                        <p>Sidebar Image</p>
+                        <div class="togglebutton switch-sidebar-image">
+                            <label>
+                                <input type="checkbox" checked="">
+                            </label>
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                </li>
+                <li class="header-title">Images</li>
+                <li class="active">
+                    <a class="img-holder switch-trigger" href="javascript:void(0)">
+                        <output id="num"></output><input type="range" min="0" max="24" data-rangeSlider>
+                   <br>
+                   <br>
+                    </a>
+                </li>
+                <li>
+                    <a class="img-holder switch-trigger" href="javascript:void(0)">
+                        <img src="assets/img/sidebar-2.jpg" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a class="img-holder switch-trigger" href="javascript:void(0)">
+                        <img src="assets/img/sidebar-3.jpg" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a class="img-holder switch-trigger" href="javascript:void(0)">
+                        <img src="assets/img/sidebar-4.jpg" alt="" />
+                    </a>
+                </li>
+                <li class="button-container">
+                    <div class="">
+                        <output id="num"></output><input type="range" min="0" max="24" data-rangeSlider>
+                   <br>
+                   <br>
+                    </div>
+                    <div class="">
+                        <a href="http://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-info btn-block">Get Free Demo</a>
+                    </div>
+                </li>
+                <li class="header-title">Thank you for 95 shares!</li>
+                <li class="button-container">
+                    <button id="twitter" class="btn btn-social btn-twitter btn-round"><i class="fa fa-twitter"></i> &middot; 45</button>
+                    <button id="facebook" class="btn btn-social btn-facebook btn-round"><i class="fa fa-facebook-square"> &middot;</i>50</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<!--   Core JS Files   -->
+<script src="assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="assets/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/material.min.js" type="text/javascript"></script>
+<script src="assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+<!-- Forms Validations Plugin -->
+<script src="assets/js/jquery.validate.min.js"></script>
+<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+<script src="assets/js/moment.min.js"></script>
+<!--  Charts Plugin -->
+<script src="assets/js/chartist.min.js"></script>
+<!--  Plugin for the Wizard -->
+<script src="assets/js/jquery.bootstrap-wizard.js"></script>
+<!--  Notifications Plugin    -->
+<script src="assets/js/bootstrap-notify.js"></script>
+<!--   Sharrre Library    -->
+<script src="assets/js/jquery.sharrre.js"></script>
+<!-- DateTimePicker Plugin -->
+<script src="assets/js/bootstrap-datetimepicker.js"></script>
+<!-- Vector Map plugin -->
+<script src="assets/js/jquery-jvectormap.js"></script>
+<!-- Sliders Plugin -->
+<script src="assets/js/nouislider.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<!-- Select Plugin -->
+<script src="assets/js/jquery.select-bootstrap.js"></script>
+<!--  DataTables.net Plugin    -->
+<script src="assets/js/jquery.datatables.js"></script>
+<!-- Sweet Alert 2 plugin -->
+<script src="assets/js/sweetalert2.js"></script>
+<!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="assets/js/jasny-bootstrap.min.js"></script>
+<!--  Full Calendar Plugin    -->
+<script src="assets/js/fullcalendar.min.js"></script>
+<!-- TagsInput Plugin -->
+<script src="assets/js/jquery.tagsinput.js"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="assets/js/material-dashboard.js"></script>
+
+<script src="assets/js/rangeSlider.js"></script>
+
+<script src="http://openlayers.org/api/OpenLayers.js"></script>
+<script src="http://maps.google.com/maps/api/js?v=3&amp;sensor=false"></script>
+<script type="text/javascript">
+var map;
+var wms;
+var rasterNumber = 1;
+
+function init()
+{
+    map = new OpenLayers.Map('map',{projection: 'EPSG:900913'},{controls: [new OpenLayers.Control.Navigation({documentDrag: true}), new OpenLayers.Control.PanZoomBar(), new OpenLayers.Control.PanZoom(),new OpenLayers.Control.ArgParser(),new OpenLayers.Control.MousePosition(),new OpenLayers.Control.Attribution()]});
+    var osm = new OpenLayers.Layer.OSM();
+    wms = new OpenLayers.Layer.WMS("ccc", "http://contaminacioncurico.tk/cgi-bin/mapserv?", {layers: "bbb", format: "image/png", transparent: true, srs: "EPSG:32719", rasterid:rasterNumber, map:'/home/fernando/mapfile.map'}, {isBaseLayer: false, reproject: false, singleTile: "false", ratio:1});
+    map.addLayers([osm,wms]);
+    map.setCenter(new OpenLayers.LonLat(-71.2329, -34.9780).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject()),14);
+    map.addControl(new OpenLayers.Control.LayerSwitcher() );
+}
+
+function get_my_url (bounds) {
+    var res = this.map.getResolution();
+    var x = Math.round ((bounds.left - this.maxExtent.left) / (res * this.tileSize.w));
+    var y = Math.round ((this.maxExtent.top - bounds.top) / (res * this.tileSize.h));
+    var z = this.map.getZoom();
+
+    var path = z + "/" + x + "/" + y + "." + this.type; 
+    var url = this.url;
+    if (url instanceof Array) {
+        url = this.selectUrl(path, url);
+    }
+    return url + path;
+}
+
+function updateRasterUp(valor)
+{     
+    wms.mergeNewParams({rasterid:valor});
+}
+
+function updateRasterDown()
+{
+    rasterNumber = rasterNumber - 1;
+    if(rasterNumber == 0)
+    {
+        rasterNumber = 1;    
+    }
+    document.getElementById('num').innerHTML = rasterNumber;
+    wms.mergeNewParams({rasterid:rasterNumber});
+}
+
+
+</script>
+
+<script>
+    (function () {
+        var val=99
+        var selector = '[data-rangeSlider]',
+                elements = document.querySelectorAll(selector);
+
+        // Example functionality to demonstrate a value feedback
+        function valueOutput(element) {
+            var value = element.value,
+                    output = element.parentNode.getElementsByTagName('output')[0];
+            output.innerHTML = "Hora: "+value;
+        }
+
+        for (var i = elements.length - 1; i >= 0; i--) {
+            valueOutput(elements[i]);
+        }
+
+        Array.prototype.slice.call(document.querySelectorAll('input[type="range"]')).forEach(function (el) {
+            el.addEventListener('input', function (e) {
+                valueOutput(e.target);
+            }, false);
+        });
+
+
+        // Basic rangeSlider initialization
+            rangeSlider.create(elements, {            
+            min: 1,
+            max: 24,
+            value : 1,
+            borderRadius : 2,
+            buffer : 0,
+            minEventInterval : 1000,
+
+            // Callback function
+            onInit: function () {
+            },
+
+            // Callback function
+            onSlideStart: function (value, percent, position) {
+                console.info('onSlideStart', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
+            },
+
+            // Callback function
+            onSlide: function (value, percent, position) {
+                console.log('onSlide', 'value: ' + value, 'percent: ' + percent, 'position: ' + position, "val:"+ val);                
+                if(value != val ){
+
+                updateRasterUp(value);
+                val=value;
+                }
+            },
+
+            // Callback function
+            onSlideEnd: function (value, percent, position) {
+                console.warn('onSlideEnd', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
+            }
+        });
+
+    })();
+</script>
+
+</html>

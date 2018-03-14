@@ -1,0 +1,287 @@
+MAP
+
+CONFIG "MS_ERRORFILE" "/tmp/ms_error.txt"
+#####################################################################################
+
+	NAME EjemploChile
+	SIZE 1000 500
+	STATUS ON
+	EXTENT -180.0 -90.000000 180 90.000000	
+#	SHAPEPATH "/home/diego/public_html/shapesChile/"
+#	FONTSET "/home/diego/public_html/misc/fonts/fonts.txt"
+#	SYMBOLSET "/home/diego/public_html/misc/symbols/symbols.sym"
+	IMAGECOLOR 255 255 255
+	UNITS dd
+
+
+
+
+#####################################################################################
+
+	WEB
+		IMAGEPATH "/var/www/html/images/"
+		IMAGEURL "http://contaminacioncurico.tk/images/"
+		METADATA  
+			"wms_title"           	"Ejemplo WMS de MapServer for Dummies"
+			"wms_onlineresource"  	"http://contaminacioncurico.tk/cgi-bin/mapserv?map=/home/fernando/mapfile.map&"
+"wms_srs" "EPSG:3857 EPSG:32719 EPSG:900913 EPSG:4326"
+"ows_srs" "EPSG:3857 EPSG:32719 EPSG:900913 EPSG:4326"
+"ows_enable_request" "*"
+"wms_enable_request" "*"
+"wms_getcapabilities_version" "1.1.1"
+"wms_feature_info_mime_type" "text/html"
+"wms_featureid" "oid"
+"gml_include_items" "all"
+"wms_inlude_items" "all"
+
+			"wms_transparent"       "true"
+		END
+	END
+
+	PROJECTION
+		"init=epsg:4326"
+	END
+
+#####################################################################################	
+
+
+LAYER
+  NAME pm25
+		METADATA
+			"wms_srs"             "EPSG:32719"
+			"wms_name"            "pm25"
+			"wms_server_version"  "1.1.1"
+			"wms_format"          "image/png"
+			"wms_enable_request" "*"
+			"wms_transparent"     "true"
+		END	
+  TYPE raster
+  OPACITY 70 
+
+  STATUS ON
+
+    VALIDATION
+        'rasterid' '^[0-9]{1,100}$'        
+    END
+
+
+DATA "PG:host='localhost' port='5432' dbname='proyecto' user='postgres' password='161618888' schema='public' table='vista_raster' where='id_raster=%rasterid%' mode='2'"
+
+FILTER "WHERE [id_raster] < %TEST%"
+#PROCESSING "CONTOUR_ITEM=elevation"
+#PROCESSING "id_register in (5,6)"
+#PROCESSING "NATIVE_FILTER=id_register < 5"
+
+CLASS
+
+  EXPRESSION ([pixel] >= 0 AND [pixel] <50)
+
+  STYLE
+
+    COLORRANGE 255 255 255  "#14D80D"
+
+    DATARANGE 0 50
+
+    RANGEITEM "pixel"
+
+  END #STYLE
+
+END #end class
+
+CLASS
+
+  EXPRESSION ([pixel] >= 50 AND [pixel] < 80)
+
+  STYLE
+
+    COLORRANGE "#FBFF75" "#DDE426"
+
+    DATARANGE 50 80
+
+    RANGEITEM "pixel"
+
+  END #STYLE
+
+END #end class
+
+CLASS
+
+  EXPRESSION ([pixel] >= 80 AND [pixel] < 110)
+
+  STYLE
+
+    COLORRANGE "#FFC475"  "#EC8704"
+
+    DATARANGE 80 110
+
+    RANGEITEM "pixel"
+
+  END #STYLE
+
+END #end class
+
+CLASS
+
+  EXPRESSION ([pixel] >= 110 AND [pixel] < 170)
+
+  STYLE
+
+    COLORRANGE "#FF683A"  "#FC0A0A"
+
+    DATARANGE 110 170
+
+    RANGEITEM "pixel"
+
+    END #STYLE
+
+  END #end class
+
+CLASS
+
+  EXPRESSION ([pixel] >= 170 AND [pixel] < 350)
+
+  STYLE
+
+    COLORRANGE "#FF6BC4"  "#D50080"
+
+    DATARANGE 170 250
+
+    RANGEITEM "pixel"
+
+  END #STYLE
+
+END #end class
+
+
+  PROJECTION
+
+    "init=epsg:32719"
+
+  END 
+
+
+
+#  PROCESSING "NATIVE_FILTER=id_register < 2"
+#  PROCESSING "NODATA=0"
+  PROCESSING "SCALE=AUTO"
+
+END
+
+
+
+############################################################################################################################################
+	LAYER
+	  	NAME pm10
+			METADATA
+			"wms_srs"             "EPSG:32719"
+			"wms_name"            "pm10"
+			"wms_server_version"  "1.1.1"
+			"wms_format"          "image/png"
+			"wms_enable_request" "*"
+			"wms_transparent"     "true"
+		END	
+	  	TYPE raster
+	  	OPACITY 80
+	  	STATUS ON
+
+	    VALIDATION
+	        'rasterid' '^[0-9]{1,100}$'  	
+	    END
+
+
+		DATA "PG:host='localhost' port='5432' dbname='proyecto' user='postgres' password='161618888' schema='public' table='vista_raster' where='id_raster=%rasterid%' mode='2'"
+
+		FILTER "WHERE [id_raster] < %TEST%"
+		PROCESSING "SCALE=AUTO"
+
+    CLASS
+
+  EXPRESSION ([pixel] >= 0 AND [pixel] <150)
+
+  STYLE
+
+    COLORRANGE 255 255 255  "#14D80D"
+
+    DATARANGE 0 150
+
+    RANGEITEM "pixel"
+
+  END #STYLE
+
+END #end class
+
+CLASS
+
+  EXPRESSION ([pixel] >= 150 AND [pixel] < 195)
+
+  STYLE
+
+    COLORRANGE "#FBFF75" "#DDE426"
+
+    DATARANGE 150 195
+
+    RANGEITEM "pixel"
+
+  END #STYLE
+
+END #end class
+
+CLASS
+
+  EXPRESSION ([pixel] >= 195 AND [pixel] < 240)
+
+  STYLE
+
+    COLORRANGE "#FFC475"  "#EC8704"
+
+    DATARANGE 195 240
+
+    RANGEITEM "pixel"
+
+  END #STYLE
+
+END #end class
+
+CLASS
+
+  EXPRESSION ([pixel] >= 240 AND [pixel] < 330)
+
+  STYLE
+
+    COLORRANGE "#FF683A"  "#FC0A0A"
+
+    DATARANGE 240 330
+
+    RANGEITEM "pixel"
+
+    END #STYLE
+
+  END #end class
+
+CLASS
+
+  EXPRESSION ([pixel] >= 330 AND [pixel] < 400)
+
+  STYLE
+
+    COLORRANGE "#FF6BC4"  "#D50080"
+
+    DATARANGE 330 400
+
+    RANGEITEM "pixel"
+
+  END #STYLE
+
+END #end class
+ 		
+
+ 		PROJECTION
+			"init=epsg:32719"
+		END
+
+	END
+###########################################################################################################################################
+
+
+
+END

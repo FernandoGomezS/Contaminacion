@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{keleher92}
+Peter Keleher, Alan~L. Cox, and Willy Zwaenepoel.
+\newblock {Lazy Release Consistency for Software Distributed Shared Memory}.
+\newblock In {\em 19th Annual International Simposium on Computer Architecture,
+  ACM}, pages 13--21, May 1992.
+
+\bibitem{lamport78}
+Leslie Lamport.
+\newblock Time, clocks, and the ordering of events in a distributed system.
+\newblock {\em Communications of the ACM}, 21(7):558--565, July 1978.
+
+\bibitem{lamport79}
+Leslie Lamport.
+\newblock How to make a multiprocessor computer that correctly executes
+  multiprocess programs.
+\newblock {\em IEEE Transactions on Computers}, C-28(9):690--691, September
+  1979.
+
+\end{thebibliography}

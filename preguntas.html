@@ -1,0 +1,173 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo.png" />
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Monitoreo de Contaminación </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href="assets/css/material-dashboard.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+</head>
+
+
+<body onload="init()">
+    <div class="wrapper">
+        <div class="sidebar" data-active-color="blue" data-background-color="black">       
+            <div class="logo">
+                <a href="index.html" class="simple-text"><img src="assets/img/logo.png" width="40" height="35">
+                    Calidad del aire                 
+                </a>
+            </div>
+            <div class="logo logo-mini">
+                <a href="index.html" class="simple-text">
+                    <img src="assets/img/logo.png" width="25" height="25">
+                </a>
+            </div>
+            <div class="sidebar-wrapper">                
+                <ul class="nav">
+                    <li  >
+                        <a href="index.html">
+                            <i class="material-icons">home</i>
+                            <p>Inicio</p>
+                        </a>
+                    </li>                      
+                    <li >
+                        <a href="resumenDia.php">
+                            <i class="material-icons">today</i>
+                            <p>Resumen del día</p>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="historial.html">
+                            <i class="material-icons">assessment</i>
+                            <p>Historial de datos</p>
+                        </a>
+                    </li> 
+                    <li class="active">
+                        <a href="preguntas.html">
+                            <i class="material-icons">live_help</i>
+                            <p>Preguntas frecuentes</p>
+                        </a>
+                    </li>               
+                    <li>
+                        <a href="acercaDe.html">
+                            <i class="material-icons">work</i>
+                            <p>Acerca de</p>
+                        </a>
+                    </li>                                                     
+                </ul>  
+            </div>
+        </div>
+        <div class="main-panel">
+            <nav class="navbar navbar-transparent navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-minimize">
+                        <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">
+                            <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+                            <i class="material-icons visible-on-sidebar-mini">view_list</i>
+                        </button>
+                    </div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="resumenDia.html#"> Preguntas frecuentes</a>
+                    </div>               
+                </div>
+            </nav>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="green">
+                                    <i class="material-icons">live_help</i>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Preguntas frecuentes</h4>
+                                    <div class="col-md-8 col-md-offset-2"> 
+                                    <p class="text-info">
+                                    ¿Qué es una estación monitora de calidad del aire?</p>
+
+                                    <p>Es una instalación destinada a medir y registrar regularmente diversas variables de calidad de aire mediante equipos automáticos.</p>
+
+                                    <p class="text-info">
+                                    ¿Qué es Material particulado (MP)?</p>
+
+                                    <p>Son partículas de diámetro menor o igual a 10 micrones (un micrón es la milésima parte de un milímetro). Por su tamaño, el MP10 es capaz de ingresar al sistema respiratorio del ser humano. Mientras menor sea el diámetro de estas partículas, mayor será el potencial daño en la salud.</p>
+                                    <br>    
+                                    <p>Podemos subdividir al Material Particulado en:</p>                                    
+                                    <p>
+                                    * Fracción gruesa: de 2,5 a 10 micrones. Puede llegar hasta los pulmones.</p>
+                                    <p>* Fracción fina: menor a 2,5 micrones. Puede ingresar hasta los alvéolos y luego a la sangre.</p>
+                                    <p class="text-info">
+                                       ¿Cómo se origina el PM10?</p>
+                                        <p>Generalmente el material particulado respirable es originado en los procesos de combustión (bencina, carbón, gas, etc.), ya se generado por Fuentes Fijas (Hornos, Calderas) o Fuentes Móviles (Vehículos), por el levantamiento de polvo generado por e viento o por el tránsito de vehículos, por emisiones volcánicas y por partículas biológicas que se incorporan a la atmósfera (polen, esporas).</p>
+                                    <p class="text-info">
+                                       ¿A quién hay que denunciar las emisiones de contaminantes que dañan el aire?</p>
+                                        <p>Depende del tipo de fuentes que emitan el contaminante.</p>
+                                        <p>Si se trata de fuentes fijas (chimeneas, calderas, hornos) al Servicio Regional de Salud que corresponda o a la Autoridad Sanitaria Metropolitana, ex SESMA en el caso de Santiago.</p><p>Si el problema es de una fuente móvil (automóviles, buses, camiones ) a la Subsecretaría de Transportes o a la Secretaría Regional Ministerial del Ministerio de Transportes y Telecomunicaciones.</p>
+                                 </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+            </footer>
+        </div>
+    </div>    
+</body>
+<!--   Core JS Files   -->
+<script src="assets/js/jquery-3.1.1.js" type="text/javascript"></script>
+<script src="assets/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/material.min.js" type="text/javascript"></script>
+<script src="assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+<!-- Forms Validations Plugin -->
+<script src="assets/js/jquery.validate.min.js"></script>
+<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+<script src="assets/js/moment.min.js"></script>
+<!--  Plugin for the Wizard -->
+<script src="assets/js/jquery.bootstrap-wizard.js"></script>
+<!--  Notifications Plugin    -->
+<script src="assets/js/bootstrap-notify.js"></script>
+<!--   Sharrre Library    -->
+<script src="assets/js/jquery.sharrre.js"></script>
+<!-- DateTimePicker Plugin -->
+<script src="assets/js/bootstrap-datetimepicker.js"></script>
+<!-- Vector Map plugin -->
+<script src="assets/js/jquery-jvectormap.js"></script>
+<!-- Sliders Plugin -->
+<script src="assets/js/nouislider.min.js"></script>
+<!-- Select Plugin -->
+<script src="assets/js/jquery.select-bootstrap.js"></script>
+<!--  DataTables.net Plugin    -->
+<script src="assets/js/jquery.datatables.js"></script>
+<!-- Sweet Alert 2 plugin -->
+<script src="assets/js/sweetalert2.js"></script>
+<!--    Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="assets/js/jasny-bootstrap.min.js"></script>
+<!--  Full Calendar Plugin    -->
+<script src="assets/js/fullcalendar.min.js"></script>
+<!-- TagsInput Plugin -->
+<script src="assets/js/jquery.tagsinput.js"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="assets/js/material-dashboard.js"></script>
+
+
+</html>
+
